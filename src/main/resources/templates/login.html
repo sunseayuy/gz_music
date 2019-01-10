@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div sec:authorize="isAuthenticated()">-->
+    <!--<p>登录的用户为：<span sec:authentication="name"></span></p>-->
+    <!--<p><span sec:authenticaton="principal.authorities"></span></p>-->
+<!--</div>-->
+<form action="/login" method="post">
+    姓名：<input type="text" name="username">
+    密码：<input type="password" name="password">
+    <input type="text" name="imageCode" placeholder="验证码" >
+    <img src="/code/image"/>
+    <button type="submit">登录</button>
+    <a href="/sign_up">注册</a>
+</form>
+</body>
+</html>

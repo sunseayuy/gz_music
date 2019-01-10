@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  datasource:
+      username: root
+      password: 123456
+      url: jdbc:mysql://127.0.0.1:3306/gz_musicdb5?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML5
+  http:
+    encoding:
+      charset: UTF-8
+mybatis:
+  typeAliasesPackage=com:
+    pan:
+      pojo:
