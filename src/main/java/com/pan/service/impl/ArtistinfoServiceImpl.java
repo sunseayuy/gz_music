@@ -1,7 +1,9 @@
 package com.pan.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.pan.dao.ArtistinfoDao;
 import com.pan.pojo.Artistinfo;
+import com.pan.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,12 +68,47 @@ public class ArtistinfoServiceImpl implements ArtistinfoService {
     }
 
     @Override
+    public List<Artistinfo> findByartist_firsthanzicode_page(String firsthanzicode, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Artistinfo> allItems = artistinfoDao.findByartist_firsthanzicode(firsthanzicode);        //全部商品
+        int countNums = artistinfoDao.findByartist_firsthanzicode_countItem(firsthanzicode);            //总记录数
+        PageBean<Artistinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
     public List<Artistinfo> findBysinger_label(String singer_label) {
         return artistinfoDao.findBysinger_label(singer_label);
     }
 
     @Override
+    public List<Artistinfo> findBysinger_label_page(String singer_label, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Artistinfo> allItems = artistinfoDao.findBysinger_label(singer_label);        //全部商品
+        int countNums = artistinfoDao.findBysinger_label_countItem(singer_label);            //总记录数
+        PageBean<Artistinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
     public Artistinfo findBysinger_id(int singer_id) {
         return artistinfoDao.findBysinger_id(singer_id);
+    }
+
+    @Override
+    public List<Artistinfo> findsingerall() {
+        return artistinfoDao.findsingerall();
+    }
+
+    @Override
+    public List<Artistinfo> findsingerall_page(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Artistinfo> allItems = artistinfoDao.findsingerall();        //全部商品
+        int countNums = artistinfoDao.singer_countItem();            //总记录数
+        PageBean<Artistinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
     }
 }

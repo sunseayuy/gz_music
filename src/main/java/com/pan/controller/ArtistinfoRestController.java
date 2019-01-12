@@ -49,16 +49,37 @@ public class ArtistinfoRestController {
         System.out.println("开始查询...");
         return artistinfoService.findByartist_firsthanzicode(firsthanzicode);
     }
+    @RequestMapping(value = "/firsthanzicode_page", method = RequestMethod.GET)
+    public List<Artistinfo> findByartist_firsthanzicode_page(@RequestParam(value = "firsthanzicode", required = true) String firsthanzicode, int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return artistinfoService.findByartist_firsthanzicode_page(firsthanzicode,currentPage,pageSize);
+    }
 
     @RequestMapping(value = "/singer_label", method = RequestMethod.GET)
     public List<Artistinfo> findBysinger_label(@RequestParam(value = "singer_label", required = true) String singer_label) {
         System.out.println("开始查询...");
         return artistinfoService.findBysinger_label(singer_label);
     }
+    @RequestMapping(value = "/singer_label_page", method = RequestMethod.GET)
+    public List<Artistinfo> findBysinger_label_page(@RequestParam(value = "singer_label", required = true) String singer_label,int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return artistinfoService.findBysinger_label_page(singer_label,currentPage,pageSize);
+    }
 
     @RequestMapping(value = "/singer_id", method = RequestMethod.GET)
     public Artistinfo findBysinger_id(@RequestParam(value = "singer_id", required = true) int singer_id) {
         System.out.println("开始查询...");
         return artistinfoService.findBysinger_id(singer_id);
+    }
+
+    @RequestMapping(value = "/findsingerall", method = RequestMethod.GET)
+    public List<Artistinfo> findsingerall() {
+        System.out.println("开始查询...");
+        return artistinfoService.findsingerall();
+    }
+    @RequestMapping(value = "/findsingerall_page", method = RequestMethod.GET)
+    public List<Artistinfo> findsingerall_page(int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return artistinfoService.findsingerall_page(currentPage,pageSize);
     }
 }

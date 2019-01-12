@@ -47,11 +47,18 @@ public interface SonginfoService {
      */
     boolean deleteSonginfo(int song_id);
 
+
     /**
      * 根据歌曲标签查询歌曲信息
      * @param song_label
      */
     List<Songinfo> findSonginfoBySonglabel(String song_label);
+    /**
+     * 根据歌曲标签分页查询歌曲信息
+     * @param song_label
+     */
+    List<Songinfo> findSonginfoBySonglabel_page(String song_label,int currentPage,int pageSize);
+
 
     /**
      * 根据歌名名字查询歌曲信息
@@ -65,11 +72,18 @@ public interface SonginfoService {
      */
     String findsinger_nameBySonginfo_song_name(String song_name);
 
+
     /**
      * 按歌手id查找歌曲
      * @param singer_id
      */
     List<Songinfo> findsonginfoBysinger_id(int singer_id);
+    /**
+     * 按歌手id分页查找歌曲
+     * @param singer_id
+     */
+    List<Songinfo> findsonginfoBysinger_id_page(int singer_id,int currentPage,int pageSize);
+
 
     /**
      * 根据歌曲id返回歌曲信息
@@ -77,15 +91,34 @@ public interface SonginfoService {
      */
     Songinfo findsonginfoBysong_id(int song_id);
 
+
     /**
-     * 按歌手id查找歌曲
+     * 按专辑id查找歌曲
      * @param album_id
      */
     List<Songinfo> findsonginfoByalbum_id(int album_id);
+    /**
+     * 按专辑id分页查找歌曲
+     * @param album_id
+     */
+    List<Songinfo> findsonginfoByalbum_id_page(int album_id,int currentPage,int pageSize);
+
 
     /**
-     * 按歌手id查找歌曲
+     * 按歌单id查找歌曲
      * @param songlist_id
      */
     List<Songinfo> findsonginfoBysonglist_id(int songlist_id);
+    /**
+     * 按歌单id分页查找歌曲
+     * @param songlist_id
+     */
+    List<Songinfo> findsonginfoBysonglist_id_page(int songlist_id,int currentPage,int pageSize);
+
+    List<Songinfo> findall();
+    /**
+     * findall_page
+     * @param
+     */
+    List<Songinfo> findall_page(int currentPage,int pageSize);
 }

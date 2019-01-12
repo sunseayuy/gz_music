@@ -4,6 +4,8 @@ package com.pan.dao;
 import com.pan.pojo.Userinfo;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * Title: SonginfoDao
  * Description:
@@ -45,4 +47,15 @@ public interface UserinfoDao {
      */
     @Select("SELECT user_id,user_nickname,user_real_name,user_sex,user_phone_number,user_email,user_country,user_province,user_city,user_intro,user_credit,avatar_url FROM userinfo where user_nickname=#{user_nickname}")
     Userinfo findByuser_nickname(String user_nickname);
+
+    /**
+     * 查找所有用户
+     */
+    @Select("SELECT user_id,user_nickname,user_real_name,user_sex,user_phone_number,user_email,user_country,user_province,user_city,user_intro,user_credit,avatar_url FROM userinfo")
+    List<Userinfo> findUserinfoALL();
+    /**
+     * 所有用户数量
+     */
+    @Select("SELECT count(*) FROM userinfo")
+    int findUserinfoALL_count();
 }

@@ -36,4 +36,11 @@ public interface Cmt_albumService {
      * @return
      */
     List<Cmt_album> findByalbum_id(int album_id);
+    /**
+     * 通过歌单id分页查看评论
+     *
+     * @param album_id
+     * @return
+     */
+    List<Cmt_album> findByalbum_id_page(int album_id,int currentPage,int pageSize);
 }

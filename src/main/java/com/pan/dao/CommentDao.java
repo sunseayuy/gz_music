@@ -34,4 +34,10 @@ public interface CommentDao {
      */
     @Select("SELECT comment_id,user_id,song_id,comment_content,comment_time,report_number,likedcount,parentCommentId FROM comment where song_id=#{song_id} ORDER BY likedcount DESC")
     List<Comment> findBysong_id(int song_id);
+    /**
+     * 查询某首歌评论信息数量
+     * Id
+     */
+    @Select("SELECT count(*) FROM comment where song_id=#{song_id}")
+    int findBysong_id_countItem(int song_id);
 }

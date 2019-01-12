@@ -61,6 +61,12 @@ public class SonginfoRestController {
         return songinfoService.findSonginfoBySonglabel(song_label);
     }
 
+    @RequestMapping(value = "/song_label_page", method = RequestMethod.GET)
+    public List<Songinfo> findBySonginfosong_lable_page(@RequestParam(value = "song_label", required = true) String song_label,int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return songinfoService.findSonginfoBySonglabel_page(song_label,currentPage,pageSize);
+    }
+
     @RequestMapping(value = "/songinfo_song_name/singer_name", method = RequestMethod.GET)
     public String findsinger_nameBySonginfo_song_name(@RequestParam(value = "song_name", required = true) String singinfoName) {
         System.out.println("开始查询...");
@@ -71,6 +77,11 @@ public class SonginfoRestController {
     public List<Songinfo> findsonginfoBysinger_id(@RequestParam(value = "singer_id", required = true) int singer_id) {
         System.out.println("开始查询...");
         return songinfoService.findsonginfoBysinger_id(singer_id);
+    }
+    @RequestMapping(value = "/findsonginfoBysinger_id_page", method = RequestMethod.GET)
+    public List<Songinfo> findsonginfoBysinger_id_page(@RequestParam(value = "singer_id", required = true) int singer_id, int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return songinfoService.findsonginfoBysinger_id_page(singer_id,currentPage,pageSize);
     }
 
     @RequestMapping(value = "/findsonginfoBysong_id", method = RequestMethod.GET)
@@ -84,10 +95,32 @@ public class SonginfoRestController {
         System.out.println("开始查询...");
         return songinfoService.findsonginfoByalbum_id(album_id);
     }
+    @RequestMapping(value = "/findsonginfoByalbum_id_page", method = RequestMethod.GET)
+    public List<Songinfo> findsonginfoByalbum_id_page(@RequestParam(value = "album_id", required = true) int album_id,int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return songinfoService.findsonginfoByalbum_id_page(album_id,currentPage,pageSize);
+    }
 
     @RequestMapping(value = "/findsonginfoBysonglist_id", method = RequestMethod.GET)
     public List<Songinfo> findsonginfoBysonglist_id(@RequestParam(value = "songlist_id", required = true) int songlist_id) {
         System.out.println("开始查询...");
         return songinfoService.findsonginfoBysonglist_id(songlist_id);
+    }
+    @RequestMapping(value = "/findsonginfoBysonglist_id_page", method = RequestMethod.GET)
+    public List<Songinfo> findsonginfoBysonglist_id_page(@RequestParam(value = "songlist_id", required = true) int songlist_id, int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return songinfoService.findsonginfoBysonglist_id_page(songlist_id,currentPage,pageSize);
+    }
+
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    public List<Songinfo> findall() {
+        System.out.println("开始查询...");
+        return songinfoService.findall();
+    }
+
+    @RequestMapping(value = "/findall_page", method = RequestMethod.GET)
+    public List<Songinfo> findall_page(int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return songinfoService.findall_page(currentPage, pageSize);
     }
 }

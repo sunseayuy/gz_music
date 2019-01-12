@@ -29,10 +29,15 @@ public interface CommentService {
      */
     boolean  deleteComment(int comment_id,int song_id);
     /**
-     * 删除歌曲评论
-     *
+     * 查找歌曲评论
      * @param song_id
      * @return
      */
     List<Comment> findBysong_id(int song_id);
+    /**
+     * 查找歌曲评论
+     * @param song_id
+     * @return
+     */
+    List<Comment> findBysong_id_page(int song_id,int currentPage,int pageSize);
 }

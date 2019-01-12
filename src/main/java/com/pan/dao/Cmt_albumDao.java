@@ -34,5 +34,11 @@ public interface Cmt_albumDao {
      */
     @Select("SELECT comment_id,user_id,album_id,comment_content,comment_time,report_number,likedcount,parentCommentId FROM cmt_album where album_id=#{album_id} ORDER BY likedcount DESC")
     List<Cmt_album> findByalbum_id(int album_id);
+    /**
+     * 查询某首歌评论信息数量
+     * Id
+     */
+    @Select("SELECT count(*) FROM cmt_album where album_id=#{album_id}")
+    int findByalbum_id_countItem(int album_id);
 }
 

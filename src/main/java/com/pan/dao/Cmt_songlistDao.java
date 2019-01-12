@@ -29,10 +29,16 @@ public interface Cmt_songlistDao {
     void deleteCmt_songlist(@Param("comment_id")int comment_id, @Param("songlist_id")int songlist_id);
 
     /**
-     * 查询某首歌评论信息
+     * 查询某歌单评论信息
      * Id
      */
     @Select("SELECT comment_id,user_id,songlist_id,comment_content,comment_time,report_number,likedcount,parentCommentId FROM cmt_songlist where songlist_id=#{songlist_id} ORDER BY likedcount DESC")
     List<Cmt_songlist> findBysonglist_id(int songlist_id);
+    /**
+     * 查询某歌单评论信息数量
+     * Id
+     */
+    @Select("SELECT count(*) FROM cmt_songlist where songlist_id=#{songlist_id} ")
+    int findBysonglist_id_countItem(int songlist_id);
 }
 

@@ -1,10 +1,14 @@
 package com.pan.service.impl;
 
 
+import com.github.pagehelper.PageHelper;
 import com.pan.dao.UserinfoDao;
 import com.pan.pojo.Userinfo;
+import com.pan.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Title: SonginfoServiceImpl
@@ -74,5 +78,20 @@ public class UserinfoServiceImpl implements UserinfoService{
     @Override
     public Userinfo findByuser_nickname(String user_nickname) {
         return userinfoDao.findByuser_nickname(user_nickname);
+    }
+
+    @Override
+    public List<Userinfo> findALL() {
+        return userinfoDao.findUserinfoALL();
+    }
+
+    @Override
+    public List<Userinfo> findALL_page(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Userinfo> allItems = userinfoDao.findUserinfoALL();        //全部商品
+        int countNums = userinfoDao.findUserinfoALL_count();            //总记录数
+        PageBean<Userinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
     }
 }

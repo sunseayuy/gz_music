@@ -39,9 +39,32 @@ public class SonglistRestController {
         return songlistService.findBysonglist_label(songlist_label);
     }
 
+    /**
+     * 分页根据songlist_label查询
+     * @param songlist_label
+     * @return
+     */
+    @RequestMapping(value = "/findbysonglist_label_page", method = RequestMethod.GET)
+    public List<Songlist> findBysonglist_labelpage(@RequestParam(value = "songlist_label", required = true) String songlist_label,int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return songlistService.findBysonglist_labelpage(songlist_label,currentPage, pageSize);
+    }
+
     @RequestMapping(value = "/findBysonglist_id", method = RequestMethod.GET)
     public Songlist findBysonglist_id(@RequestParam(value = "songlist_id", required = true) int songlist_id) {
         System.out.println("开始查询...");
         return songlistService.findBysonglist_id(songlist_id);
+    }
+
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    public List<Songlist> findall() {
+        System.out.println("开始查询...");
+        return songlistService.findall();
+    }
+
+    @RequestMapping(value = "/findall_page", method = RequestMethod.GET)
+    public List<Songlist> findall_page(int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return songlistService.findall_page(currentPage, pageSize);
     }
 }

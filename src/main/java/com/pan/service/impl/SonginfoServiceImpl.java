@@ -1,7 +1,9 @@
 package com.pan.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.pan.dao.SonginfoDao;
 import com.pan.pojo.Songinfo;
+import com.pan.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,6 +80,16 @@ class SonginfoServiceImpl implements SonginfoService {
     }
 
     @Override
+    public List<Songinfo> findSonginfoBySonglabel_page(String song_label, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Songinfo> allItems = songinfoDao.findBysong_label(song_label);        //全部商品
+        int countNums = songinfoDao.findBysong_label_countItem(song_label);            //总记录数
+        PageBean<Songinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
     public List<Songinfo> findSonginfoByName(String song_name) {
         return songinfoDao.findBysong_name(song_name);
     }
@@ -93,17 +105,63 @@ class SonginfoServiceImpl implements SonginfoService {
     }
 
     @Override
+    public List<Songinfo> findsonginfoBysinger_id_page(int singer_id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Songinfo> allItems = songinfoDao.findsonginfoBysinger_id(singer_id);        //全部商品
+        int countNums = songinfoDao.findsonginfoBysinger_id_countItem(singer_id);            //总记录数
+        PageBean<Songinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
     public Songinfo findsonginfoBysong_id(int song_id) {
         return songinfoDao.findsonginfoBysong_id(song_id);
     }
 
     @Override
     public List<Songinfo> findsonginfoByalbum_id(int album_id) {
+
         return songinfoDao.findsonginfoByalbum_id(album_id);
+    }
+
+    @Override
+    public List<Songinfo> findsonginfoByalbum_id_page(int album_id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Songinfo> allItems = songinfoDao.findsonginfoByalbum_id(album_id);        //全部商品
+        int countNums = songinfoDao.findsonginfoByalbum_id_countItem(album_id);            //总记录数
+        PageBean<Songinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
     }
 
     @Override
     public List<Songinfo> findsonginfoBysonglist_id(int songlist_id) {
         return songinfoDao.findsonginfoBysonglist_id(songlist_id);
+    }
+
+    @Override
+    public List<Songinfo> findsonginfoBysonglist_id_page(int songlist_id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Songinfo> allItems = songinfoDao.findsonginfoBysonglist_id(songlist_id);        //全部商品
+        int countNums = songinfoDao.findsonginfoBysonglist_id_countItem(songlist_id);            //总记录数
+        PageBean<Songinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
+    public List<Songinfo> findall() {
+        return songinfoDao.findall();
+    }
+
+    @Override
+    public List<Songinfo> findall_page(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Songinfo> allItems = songinfoDao.findall();
+        int countNums = songinfoDao.countItem();
+        PageBean<Songinfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
     }
 }

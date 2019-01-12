@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  *
  * Title: UserRestController
@@ -60,5 +62,16 @@ public class UserinfoRestController {
     public Userinfo findByuser_nickname(@RequestParam(value = "user_nickname", required = true) String userinfoNickname) {
         System.out.println("开始查询...");
         return userinfoService.findByuser_nickname(userinfoNickname);
+    }
+
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    public List<Userinfo> findall() {
+        System.out.println("开始查询...");
+        return userinfoService.findALL();
+    }
+    @RequestMapping(value = "/findall_page", method = RequestMethod.GET)
+    public List<Userinfo> findall_page(int currentPage,int pageSize) {
+        System.out.println("开始查询...");
+        return userinfoService.findALL_page(currentPage,pageSize);
     }
 }

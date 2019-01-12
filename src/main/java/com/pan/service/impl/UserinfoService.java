@@ -3,6 +3,8 @@ package com.pan.service.impl;
 
 import com.pan.pojo.Userinfo;
 
+import java.util.List;
+
 /**
  * Title: UserinfoService
  * Description:
@@ -50,4 +52,14 @@ public interface UserinfoService {
      * @param user_nickname
      */
     Userinfo findByuser_nickname(String user_nickname);
+
+    /**
+     * 按条件查找全部
+     * @param
+     */
+    List<Userinfo> findALL();
+    /**
+     * 分页查找全部用户
+     */
+    List<Userinfo> findALL_page(int currentPage,int pageSize);
 }

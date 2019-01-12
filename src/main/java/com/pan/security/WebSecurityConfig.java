@@ -89,6 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/songlist/**").permitAll()
                 .antMatchers("/person_index").authenticated()//验证登陆后后可用
                 .antMatchers("/api/cmt_songlist/**").permitAll()
+                .antMatchers("/api/notification/**").permitAll()
                 .antMatchers("/api/albuminfo/**").permitAll()
                 .antMatchers("/api/artistinfo/**").permitAll()
                 .antMatchers("/sign_up").permitAll()

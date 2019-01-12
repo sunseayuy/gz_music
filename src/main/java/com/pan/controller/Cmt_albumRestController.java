@@ -43,4 +43,9 @@ public class Cmt_albumRestController {
         System.out.println("开始查询...");
         return cmt_albumService.findByalbum_id(album_id);
     }
+    @RequestMapping(value = "/album_id_page", method = RequestMethod.GET)
+    public List<Cmt_album> findByalbum_id_page(@RequestParam(value = "album_id", required = true) int album_id,int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return cmt_albumService.findByalbum_id_page(album_id,currentPage,pageSize);
+    }
 }

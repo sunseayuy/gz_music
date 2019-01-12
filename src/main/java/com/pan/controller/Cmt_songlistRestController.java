@@ -43,4 +43,10 @@ public class Cmt_songlistRestController {
         System.out.println("开始查询...");
         return cmt_songlistService.findBysonglist_id(songlist_id);
     }
+
+    @RequestMapping(value = "/songlist_id_page", method = RequestMethod.GET)
+    public List<Cmt_songlist> findBysong_id_page(@RequestParam(value = "songlist_id", required = true) int songlist_id,int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return cmt_songlistService.findBysonglist_id_page(songlist_id,currentPage,pageSize);
+    }
 }

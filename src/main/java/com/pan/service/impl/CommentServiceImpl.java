@@ -1,7 +1,9 @@
 package com.pan.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.pan.dao.CommentDao;
 import com.pan.pojo.Comment;
+import com.pan.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +52,15 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> findBysong_id(int song_id) {
         return commentDao.findBysong_id(song_id);
+    }
+
+    @Override
+    public List<Comment> findBysong_id_page(int song_id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Comment> allItems = commentDao.findBysong_id(song_id);        //全部商品
+        int countNums = commentDao.findBysong_id_countItem(song_id);            //总记录数
+        PageBean<Comment> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
     }
 }

@@ -44,5 +44,11 @@ public class CommentRestController {
         return commentService.findBysong_id(song_id);
     }
 
+    @RequestMapping(value = "/song_id_page", method = RequestMethod.GET)
+    public List<Comment> findBysong_id_page(@RequestParam(value = "song_id", required = true) int song_id,int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return commentService.findBysong_id_page(song_id,currentPage,pageSize);
+    }
+
 }
 

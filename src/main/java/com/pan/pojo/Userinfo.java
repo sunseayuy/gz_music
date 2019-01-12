@@ -38,18 +38,18 @@ public class Userinfo {
      * 用户性别
      */
     @Column
-    private char user_sex;
+    private String user_sex;
 
     /**
      * 用户电话号码
      */
-    @Column(nullable = false,unique = true)
+    @Column(unique = true)
     private int user_phone_number;
 
     /**
      * 用户邮件号码
      */
-    @Column(nullable = false,unique = true)
+    @Column(unique = true)
     private String user_email;
 
     /**
@@ -115,11 +115,11 @@ public class Userinfo {
         this.user_nickname = user_nickname;
     }
 
-    public char getUser_sex() {
+    public String getUser_sex() {
         return user_sex;
     }
 
-    public void setUser_sex(char user_sex) {
+    public void setUser_sex(String user_sex) {
         this.user_sex = user_sex;
     }
 

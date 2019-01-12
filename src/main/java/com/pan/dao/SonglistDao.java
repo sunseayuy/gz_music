@@ -33,10 +33,28 @@ public interface SonglistDao {
      */
     @Select("SELECT songlist_id,user_id,songlist_name,imgUrl,songlist_label,song_number,songlist_time,description,commentThread FROM songlist where LOCATE(#{songlist_label},songlist_label)")
     List<Songlist> findBysonglist_label(String songlist_label);
+    /**
+     * 按条件songlist_label分页查找查找总数
+     */
+    @Select("SELECT count(*) FROM songlist where LOCATE(#{songlist_label},songlist_label)")
+    int findBysonglist_label_countItem(String songlist_label);
+
 
     /**
      * 根据歌单id返回歌单信息
      */
     @Select("SELECT songlist_id,user_id,songlist_name,imgUrl,songlist_label,song_number,songlist_time,description,commentThread FROM songlist where songlist_id=#{songlist_id}")
     Songlist findBysonglist_id(int songlist_id);
+
+
+    /**
+     * findall
+     */
+    @Select("SELECT songlist_id,user_id,songlist_name,imgUrl,songlist_label,song_number,songlist_time,description,commentThread FROM songlist")
+    List<Songlist> findall();
+    /**
+     * 搜索条数
+     */
+    @Select("SELECT count(*) FROM songlist")
+    int countItem();
 }
