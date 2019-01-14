@@ -40,4 +40,11 @@ public interface CommentService {
      * @return
      */
     List<Comment> findBysong_id_page(int song_id,int currentPage,int pageSize);
+    /**
+     * 查找所有歌曲评论
+     * @param
+     * @return
+     */
+    List<Comment> findall(int currentPage,int pageSize);
+
 }

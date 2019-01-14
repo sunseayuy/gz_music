@@ -1,17 +1,16 @@
 package com.pan.controller;
 
 import com.pan.pojo.Songlist;
+import com.pan.pojo.Songlist_relation;
 import com.pan.service.impl.SonglistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/songlist")
+@CrossOrigin
 public class SonglistRestController {
     @Autowired
     private SonglistService songlistService;
@@ -67,4 +66,17 @@ public class SonglistRestController {
         System.out.println("开始查询...");
         return songlistService.findall_page(currentPage, pageSize);
     }
+
+    @RequestMapping(value = "/findbyuser_id", method = RequestMethod.GET)
+    public List<Songlist> findbyuser_id(@RequestParam(value = "user_id", required = true) int user_id) {
+        System.out.println("开始查询...");
+        return songlistService.findSonglistbyuser_id(user_id);
+    }
+
+    @RequestMapping(value = "/addSongintoSonglist", method = RequestMethod.POST)
+    public boolean addSongintoSonglist( Songlist_relation songlist_relation) {
+        System.out.println("开始新增...");
+        return songlistService.addSongintoSonglist(songlist_relation);
+    }
+
 }

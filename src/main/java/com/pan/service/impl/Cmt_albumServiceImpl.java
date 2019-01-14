@@ -50,14 +50,40 @@ public class Cmt_albumServiceImpl implements Cmt_albumService{
 
     @Override
     public List<Cmt_album> findByalbum_id(int album_id) {
-        return cmt_albumDao.findByalbum_id(album_id);
+        List<Cmt_album> p=cmt_albumDao.findByalbum_id(album_id);
+        int i=p.size();
+        for(int j=0;j<i;j++)
+        {
+            p.get(j).setUser_nickname(cmt_albumDao.finduser_nickname(p.get(j).getComment_id()));
+        }
+        return p;
     }
 
     @Override
     public List<Cmt_album> findByalbum_id_page(int album_id, int currentPage, int pageSize) {
         PageHelper.startPage(currentPage, pageSize);
-        List<Cmt_album> allItems = cmt_albumDao.findByalbum_id(album_id);        //全部商品
+        List<Cmt_album> allItems = cmt_albumDao.findByalbum_id(album_id);
+        int i=allItems.size();
+        for(int j=0;j<i;j++)
+        {
+            allItems.get(j).setUser_nickname(cmt_albumDao.finduser_nickname(allItems.get(j).getComment_id()));
+        }
         int countNums = cmt_albumDao.findByalbum_id_countItem(album_id);            //总记录数
+        PageBean<Cmt_album> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
+    public List<Cmt_album> findall(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Cmt_album> allItems = cmt_albumDao.findall();
+        int i=allItems.size();
+        for(int j=0;j<i;j++)
+        {
+            allItems.get(j).setUser_nickname(cmt_albumDao.finduser_nickname(allItems.get(j).getComment_id()));
+        }
+        int countNums = cmt_albumDao.findall_countItem();            //总记录数
         PageBean<Cmt_album> pageData = new PageBean<>(currentPage, pageSize, countNums);
         pageData.setItems(allItems);
         return pageData.getItems();

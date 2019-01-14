@@ -43,4 +43,11 @@ public interface Cmt_songlistService {
      * @return
      */
     List<Cmt_songlist> findBysonglist_id_page(int songlist_id,int currentPage,int pageSize);
+
+    /**
+     * 查找所有歌曲评论
+     * @param
+     * @return
+     */
+    List<Cmt_songlist> findall(int currentPage,int pageSize);
 }

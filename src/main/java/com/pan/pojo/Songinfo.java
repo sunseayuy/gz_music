@@ -88,6 +88,16 @@ public class Songinfo {
     @Column
     private String down_url;
 
+    /**
+     * 专辑名
+     */
+    private String album_name;
+
+    /**
+     * 歌手姓名
+     */
+    private String singer_name;
+
 
     public Songinfo() {
     }
@@ -186,5 +196,21 @@ public class Songinfo {
 
     public void setDown_url(String down_url) {
         this.down_url = down_url;
+    }
+
+    public String getAlbum_name() {
+        return album_name;
+    }
+
+    public void setAlbum_name(String album_name) {
+        this.album_name = album_name;
+    }
+
+    public String getSinger_name() {
+        return singer_name;
+    }
+
+    public void setSinger_name(String singer_name) {
+        this.singer_name = singer_name;
     }
 }

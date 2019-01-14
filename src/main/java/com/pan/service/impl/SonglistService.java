@@ -1,6 +1,7 @@
 package com.pan.service.impl;
 
 import com.pan.pojo.Songlist;
+import com.pan.pojo.Songlist_relation;
 
 import java.util.List;
 
@@ -53,4 +54,8 @@ public interface SonglistService {
      * @param
      */
     List<Songlist> findall_page(int currentPage,int pageSize);
+
+    List<Songlist> findSonglistbyuser_id(int user_id);
+
+    boolean addSongintoSonglist(Songlist_relation songlist_relation);
 }

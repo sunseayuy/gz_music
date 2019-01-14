@@ -3,10 +3,7 @@ package com.pan.controller;
 import com.pan.pojo.Cmt_album;
 import com.pan.service.impl.Cmt_albumService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/api/cmt_album")
+@CrossOrigin
 public class Cmt_albumRestController {
     @Autowired
     private Cmt_albumService cmt_albumService;
@@ -47,5 +45,10 @@ public class Cmt_albumRestController {
     public List<Cmt_album> findByalbum_id_page(@RequestParam(value = "album_id", required = true) int album_id,int currentPage, int pageSize) {
         System.out.println("开始查询...");
         return cmt_albumService.findByalbum_id_page(album_id,currentPage,pageSize);
+    }
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    public List<Cmt_album> findall(int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return cmt_albumService.findall(currentPage,pageSize);
     }
 }

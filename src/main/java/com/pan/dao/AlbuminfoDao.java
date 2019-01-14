@@ -83,4 +83,13 @@ public interface AlbuminfoDao {
      */
     @Select("SELECT count(*) FROM albuminfo ")
     int findalbuminfoall_countItem();
+
+    /**
+     * 查找演唱者姓名
+     * @param album_id
+     * @return
+     */
+    @Select("SELECT singer_name FROM artistinfo WHERE singer_id in (SELECT singer_id FROM albuminfo WHERE album_id=#{album_id})")
+    String findsinger_name(int album_id);
+
 }

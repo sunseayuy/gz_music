@@ -61,6 +61,11 @@ public class Songlist {
     @Column
     private String commentThread;
 
+    /**
+     * 用户昵称
+     */
+    private String user_nickname;
+
     public Songlist() {
     }
 
@@ -134,5 +139,13 @@ public class Songlist {
 
     public void setCommentThread(String commentThread) {
         this.commentThread = commentThread;
+    }
+
+    public String getUser_nickname() {
+        return user_nickname;
+    }
+
+    public void setUser_nickname(String user_nickname) {
+        this.user_nickname = user_nickname;
     }
 }

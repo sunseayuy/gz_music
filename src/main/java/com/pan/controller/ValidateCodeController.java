@@ -4,6 +4,7 @@ package com.pan.controller;
 import com.pan.entity.ImageCode;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.util.Random;
 
 @RestController
+@CrossOrigin
 public class ValidateCodeController {
     public static final String SESSION_KEY_IMAGE_CODE = "SESSION_KEY_IMAGE_CODE";
 

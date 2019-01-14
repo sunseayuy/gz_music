@@ -58,12 +58,19 @@ public interface SonginfoDao {
     @Select("SELECT count(*) FROM songinfo where song_label=#{song_label}")
     int findBysong_label_countItem(String song_label);
 
+    /**
+     * 查询此歌曲歌手名字
+     * Id
+     */
+    @Select("SELECT singer_name FROM artistinfo where singer_id in (SELECT singer_id FROM songinfo WHERE song_id=#{song_id})")
+    String findsinger_name(int song_id);
 
     /**
-     * 按条件查找歌手姓名：singer_id
+     * 查询此歌曲专辑名字
+     * Id
      */
-    @Select("SELECT singer_name FROM artistinfo WHERE artistinfo.singer_id IN (SELECT songinfo.singer_id FROM songinfo WHERE songinfo.song_name=#{song_name})")
-    String findBySonginfo_song_name(String song_name);
+    @Select("SELECT album_name FROM albuminfo where album_id in (SELECT album_id FROM songinfo WHERE song_id=#{song_id})")
+    String findalbum_name(int song_id);
 
 
     /**

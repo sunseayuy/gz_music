@@ -40,4 +40,19 @@ public interface CommentDao {
      */
     @Select("SELECT count(*) FROM comment where song_id=#{song_id}")
     int findBysong_id_countItem(int song_id);
+
+    /**
+     * 查询此评论用户昵称
+     * Id
+     */
+    @Select("SELECT user_nickname FROM userinfo where user_id in (SELECT user_id FROM comment WHERE comment_id=#{comment_id})")
+    String finduser_nickname(int comment_id);
+    /**
+     * 查询所有评论信息
+     * Id
+     */
+    @Select("SELECT comment_id,user_id,song_id,comment_content,comment_time,report_number,likedcount,parentCommentId FROM comment")
+    List<Comment> findall();
+    @Select("SELECT count(*) FROM comment")
+    int findall_countItem();
 }

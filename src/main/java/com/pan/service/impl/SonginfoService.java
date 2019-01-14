@@ -67,17 +67,16 @@ public interface SonginfoService {
     List<Songinfo> findSonginfoByName(String song_name);
 
     /**
-     * 根据歌名名字查询歌手姓名
-     * @param song_name
-     */
-    String findsinger_nameBySonginfo_song_name(String song_name);
-
-
-    /**
      * 按歌手id查找歌曲
      * @param singer_id
      */
     List<Songinfo> findsonginfoBysinger_id(int singer_id);
+    /**
+     * 按歌手id查找歌曲数量
+     * @param singer_id
+     */
+    int findsonginfoBysinger_id_number(int singer_id);
+
     /**
      * 按歌手id分页查找歌曲
      * @param singer_id

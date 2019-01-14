@@ -3,10 +3,7 @@ package com.pan.controller;
 import com.pan.pojo.Songinfo;
 import com.pan.service.impl.SonginfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/api/songinfo")
-
+@CrossOrigin
 public class SonginfoRestController {
     @Autowired
     private SonginfoService songinfoService;
@@ -67,22 +64,22 @@ public class SonginfoRestController {
         return songinfoService.findSonginfoBySonglabel_page(song_label,currentPage,pageSize);
     }
 
-    @RequestMapping(value = "/songinfo_song_name/singer_name", method = RequestMethod.GET)
-    public String findsinger_nameBySonginfo_song_name(@RequestParam(value = "song_name", required = true) String singinfoName) {
-        System.out.println("开始查询...");
-        return songinfoService.findsinger_nameBySonginfo_song_name(singinfoName);
-    }
-
     @RequestMapping(value = "/findsonginfoBysinger_id", method = RequestMethod.GET)
     public List<Songinfo> findsonginfoBysinger_id(@RequestParam(value = "singer_id", required = true) int singer_id) {
         System.out.println("开始查询...");
         return songinfoService.findsonginfoBysinger_id(singer_id);
+    }
+    @RequestMapping(value = "/findsonginfoBysinger_id_number", method = RequestMethod.GET)
+    public int findsonginfoBysinger_id_number(@RequestParam(value = "singer_id", required = true) int singer_id) {
+        System.out.println("开始查询...");
+        return songinfoService.findsonginfoBysinger_id_number(singer_id);
     }
     @RequestMapping(value = "/findsonginfoBysinger_id_page", method = RequestMethod.GET)
     public List<Songinfo> findsonginfoBysinger_id_page(@RequestParam(value = "singer_id", required = true) int singer_id, int currentPage, int pageSize) {
         System.out.println("开始查询...");
         return songinfoService.findsonginfoBysinger_id_page(singer_id,currentPage,pageSize);
     }
+
 
     @RequestMapping(value = "/findsonginfoBysong_id", method = RequestMethod.GET)
     public Songinfo findsonginfoBysong_id(@RequestParam(value = "song_id", required = true) int song_id) {

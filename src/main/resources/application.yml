@@ -4,7 +4,7 @@ spring:
   datasource:
       username: root
       password: 123456
-      url: jdbc:mysql://127.0.0.1:3306/gz_musicdb5?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      url: jdbc:mysql://127.0.0.1:3306/gz_musicdb6?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
       driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:

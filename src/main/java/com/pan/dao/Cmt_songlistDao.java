@@ -40,5 +40,21 @@ public interface Cmt_songlistDao {
      */
     @Select("SELECT count(*) FROM cmt_songlist where songlist_id=#{songlist_id} ")
     int findBysonglist_id_countItem(int songlist_id);
+
+    /**
+     * 查询此评论用户昵称
+     * Id
+     */
+    @Select("SELECT user_nickname FROM userinfo where user_id in (SELECT user_id FROM cmt_songlist WHERE comment_id=#{comment_id})")
+    String finduser_nickname(int comment_id);
+
+    /**
+     * 查询所有评论信息
+     * Id
+     */
+    @Select("SELECT comment_id,user_id,songlist_id,comment_content,comment_time,report_number,likedcount,parentCommentId FROM cmt_songlist")
+    List<Cmt_songlist> findall();
+    @Select("SELECT count(*) FROM cmt_songlist")
+    int findall_countItem();
 }
 

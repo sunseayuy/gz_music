@@ -40,5 +40,21 @@ public interface Cmt_albumDao {
      */
     @Select("SELECT count(*) FROM cmt_album where album_id=#{album_id}")
     int findByalbum_id_countItem(int album_id);
+
+    /**
+     * 查询此评论用户昵称
+     * Id
+     */
+    @Select("SELECT user_nickname FROM userinfo where user_id in (SELECT user_id FROM cmt_album WHERE comment_id=#{comment_id})")
+    String finduser_nickname(int comment_id);
+
+    /**
+     * 查询所有评论信息
+     * Id
+     */
+    @Select("SELECT comment_id,user_id,album_id,comment_content,comment_time,report_number,likedcount,parentCommentId FROM cmt_album")
+    List<Cmt_album> findall();
+    @Select("SELECT count(*) FROM cmt_album")
+    int findall_countItem();
 }
 

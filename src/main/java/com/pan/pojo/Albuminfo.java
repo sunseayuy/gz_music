@@ -63,6 +63,11 @@ public class Albuminfo {
     @Column
     private String size;
 
+    /**
+     * 演唱者
+     */
+    private String singer_name;
+
     public Albuminfo() {
     }
 
@@ -128,5 +133,13 @@ public class Albuminfo {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getSinger_name() {
+        return singer_name;
+    }
+
+    public void setSinger_name(String singer_name) {
+        this.singer_name = singer_name;
     }
 }

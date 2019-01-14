@@ -78,5 +78,11 @@ public interface ArtistinfoService {
      * @param
      */
     List<Artistinfo> findsingerall_page(int currentPage,int pageSize);
+
+    /**
+     * 查找populer歌手
+     * @param
+     */
+    List<Artistinfo> findpopuler();
 }
 

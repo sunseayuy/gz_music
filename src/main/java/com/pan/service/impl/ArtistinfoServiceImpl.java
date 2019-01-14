@@ -111,4 +111,9 @@ public class ArtistinfoServiceImpl implements ArtistinfoService {
         pageData.setItems(allItems);
         return pageData.getItems();
     }
+
+    @Override
+    public List<Artistinfo> findpopuler() {
+        return artistinfoDao.findpopoler();
+    }
 }

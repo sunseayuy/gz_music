@@ -75,4 +75,10 @@ public interface ArtistinfoDao {
      */
     @Select("SELECT count(*) FROM artistinfo")
     int singer_countItem();
+
+    /**
+     * 按条件歌手标签查找歌手
+     */
+    @Select("SELECT * FROM artistinfo WHERE singer_id IN (SELECT singer_id FROM songinfo ORDER BY popularity DESC) LIMIT 10")
+    List<Artistinfo> findpopoler();
 }

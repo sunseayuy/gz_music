@@ -3,6 +3,7 @@ package com.pan.dao;
 
 
 import com.pan.pojo.Songlist;
+import com.pan.pojo.Songlist_relation;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -57,4 +58,23 @@ public interface SonglistDao {
      */
     @Select("SELECT count(*) FROM songlist")
     int countItem();
+
+    /**
+     * findsonglistbyuser_id
+     */
+    @Select("SELECT songlist_id,user_id,songlist_name,imgUrl,songlist_label,song_number,songlist_time,description,commentThread FROM songlist where user_id=#{user_id}")
+    List<Songlist> findSonglistbyuser_id(int user_id);
+    /**
+     * 歌单歌曲数据新增
+     */
+    @Insert("insert into songlist_relation(songlist_id,song_id) values (#{songlist_id},#{song_id})")
+    void addSongintoSonglist(Songlist_relation songlist_relation);
+
+    /**
+     * 查询此评论用户昵称
+     * Id
+     */
+    @Select("SELECT user_nickname FROM userinfo where user_id in (SELECT user_id FROM songlist WHERE songlist_id=#{songlist_id})")
+    String finduser_nickname(int songlist_id);
+
 }

@@ -3,10 +3,12 @@ package com.pan.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@CrossOrigin
 public class ErrorPageController {
     @RequestMapping(value = "/error/{code}")
     public String error(@PathVariable int code, Model model) {

@@ -43,4 +43,11 @@ public interface Cmt_albumService {
      * @return
      */
     List<Cmt_album> findByalbum_id_page(int album_id,int currentPage,int pageSize);
+
+    /**
+     * 查找所有歌曲评论
+     * @param
+     * @return
+     */
+    List<Cmt_album> findall(int currentPage,int pageSize);
 }

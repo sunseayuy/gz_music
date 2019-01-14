@@ -3,10 +3,7 @@ package com.pan.controller;
 import com.pan.pojo.Artistinfo;
 import com.pan.service.impl.ArtistinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/api/artistinfo")
-
+@CrossOrigin
 public class ArtistinfoRestController {
     @Autowired
     private ArtistinfoService artistinfoService;
@@ -81,5 +78,11 @@ public class ArtistinfoRestController {
     public List<Artistinfo> findsingerall_page(int currentPage,int pageSize) {
         System.out.println("开始查询...");
         return artistinfoService.findsingerall_page(currentPage,pageSize);
+    }
+
+    @RequestMapping(value = "/findpopuler", method = RequestMethod.GET)
+    public List<Artistinfo> findpopuler() {
+        System.out.println("开始查询...");
+        return artistinfoService.findpopuler();
     }
 }

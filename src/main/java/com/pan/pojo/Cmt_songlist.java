@@ -19,7 +19,7 @@ public class Cmt_songlist {
      */
     @Id
     @GeneratedValue
-    private String comment_id;
+    private int comment_id;
 
     /**
      * 用户id
@@ -58,14 +58,19 @@ public class Cmt_songlist {
     @Column
     private String parentCommentId;
 
+    /**
+     * 用户昵称
+     */
+    private String user_nickname;
+
     public  Cmt_songlist() {
     }
 
-    public String getComment_id() {
+    public int getComment_id() {
         return comment_id;
     }
 
-    public void setComment_id(String comment_id) {
+    public void setComment_id(int comment_id) {
         this.comment_id = comment_id;
     }
 
@@ -123,5 +128,13 @@ public class Cmt_songlist {
 
     public void setParentCommentId(String parentCommentId) {
         this.parentCommentId = parentCommentId;
+    }
+
+    public String getUser_nickname() {
+        return user_nickname;
+    }
+
+    public void setUser_nickname(String user_nickname) {
+        this.user_nickname = user_nickname;
     }
 }

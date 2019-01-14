@@ -3,10 +3,7 @@ package com.pan.controller;
 import com.pan.pojo.Cmt_songlist;
 import com.pan.service.impl.Cmt_songlistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/api/cmt_songlist")
+@CrossOrigin
 public class Cmt_songlistRestController {
     @Autowired
     private Cmt_songlistService cmt_songlistService;
@@ -48,5 +46,11 @@ public class Cmt_songlistRestController {
     public List<Cmt_songlist> findBysong_id_page(@RequestParam(value = "songlist_id", required = true) int songlist_id,int currentPage, int pageSize) {
         System.out.println("开始查询...");
         return cmt_songlistService.findBysonglist_id_page(songlist_id,currentPage,pageSize);
+    }
+
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    public List<Cmt_songlist> findall(int currentPage, int pageSize) {
+        System.out.println("开始查询...");
+        return cmt_songlistService.findall(currentPage,pageSize);
     }
 }

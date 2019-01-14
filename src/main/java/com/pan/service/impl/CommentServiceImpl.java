@@ -51,14 +51,40 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> findBysong_id(int song_id) {
-        return commentDao.findBysong_id(song_id);
+        List<Comment> p=commentDao.findBysong_id(song_id);
+        int i=p.size();
+        for(int j=0;j<i;j++)
+        {
+            p.get(j).setUser_nickname(commentDao.finduser_nickname(p.get(j).getComment_id()));
+        }
+        return p;
     }
 
     @Override
     public List<Comment> findBysong_id_page(int song_id, int currentPage, int pageSize) {
         PageHelper.startPage(currentPage, pageSize);
-        List<Comment> allItems = commentDao.findBysong_id(song_id);        //全部商品
+        List<Comment> allItems = commentDao.findBysong_id(song_id);
+        int i=allItems.size();
+        for(int j=0;j<i;j++)
+        {
+            allItems.get(j).setUser_nickname(commentDao.finduser_nickname(allItems.get(j).getComment_id()));
+        }
         int countNums = commentDao.findBysong_id_countItem(song_id);            //总记录数
+        PageBean<Comment> pageData = new PageBean<>(currentPage, pageSize, countNums);
+        pageData.setItems(allItems);
+        return pageData.getItems();
+    }
+
+    @Override
+    public List<Comment> findall(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Comment> allItems = commentDao.findall();
+        int i=allItems.size();
+        for(int j=0;j<i;j++)
+        {
+            allItems.get(j).setUser_nickname(commentDao.finduser_nickname(allItems.get(j).getComment_id()));
+        }
+        int countNums = commentDao.findall_countItem();            //总记录数
         PageBean<Comment> pageData = new PageBean<>(currentPage, pageSize, countNums);
         pageData.setItems(allItems);
         return pageData.getItems();
